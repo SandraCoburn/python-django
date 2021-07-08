@@ -29,10 +29,10 @@ document.querySelectorAll()
 
 ```
 myvariable.style.color (Many CSS options)
-myvariable.textContent
-myvariable.innerHTML
-myvariable.getAttribute()
-myvariable.setAttribute()
+myvariable.textContent - This returns just the text
+myvariable.innerHTML - This returns the actual html
+myvariable.getAttribute() - This returns the original attribute
+myvariable.setAttribute() - This allowed you to set an attribute
 ```
 
 Ex.:
@@ -40,4 +40,26 @@ Ex.:
 ```
 var myheader = document.querySelector("h1")
 myheader.style.color = "blue"
+```
+
+Ex. changing text, html content and setting attributes with the DOM
+
+```
+p.textContent = "new text"
+p.innterHTML = "<strong>I'm bold</strong>"
+var special = document.querySelector("Hspecial")
+var specialA = special.querySelector("a)
+specialA.getAtribute("href")
+specialA.setAttribute("href", "https://www.amazon.com") //changed the link to amazon
+```
+
+### Event Listeners
+
+- Listening for an event looks like this:
+  - myvariable.addEventListener(event, func)
+- An example:
+
+```
+var head = document.querySelector('h1)
+head.addEventListener('click',changeColor)
 ```
