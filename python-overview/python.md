@@ -210,3 +210,39 @@ print(out)
 
 out = [num**2 for num in x]
 ```
+
+## Functions
+
+Syntax:
+
+```
+def my_func(param1="default"):
+  '''
+  This is doctstring
+  '''
+  return "Printing function {}".format(param1)
+
+print(my_func("hello"))
+```
+
+### Lambda expressions
+
+```
+mylist = [1,2,3,4,5,6,7,8]
+
+def even_bool(num):
+  return num % 2 != 0
+evens = filter(even_bool, mylist) #filter is a generator
+print(list(evens))
+
+evens = filter(lambda num: num%2 == 0, mylist)
+print(list(evens))
+```
+
+### Methods
+
+st = "Hello"
+
+- st.lower()
+- st.upper()
+- st.split()
