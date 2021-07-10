@@ -258,3 +258,17 @@ st = "Hello"
     - Names assigned at the top-level of a module file, or delcared global in a def withing the file.
   - Built-in
     - Names preassigned in the built-in names module: open, range, SyntaxError,...
+
+## Object Oriented Programming
+
+- In Python everything is object
+  - To check: print(type(20.0)) # class 'float'
+- We create our own objects with classes
+
+```
+class Sample():
+  pass
+
+x = Sample()
+print(type(x)) # <class '__main__.Sample>
+```
