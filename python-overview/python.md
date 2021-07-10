@@ -246,3 +246,29 @@ st = "Hello"
 - st.lower()
 - st.upper()
 - st.split()
+
+### Scope
+
+- Python Scope follow the LEGB Rule:
+  - Local
+    - Names assigned in any way within a function (def or lambda), and not declared global in that function.
+  - Enclosing Function locals
+    - Names in the local scope of any and all enclosing functions (def or lambda), from iiner to outer.
+  - Global
+    - Names assigned at the top-level of a module file, or delcared global in a def withing the file.
+  - Built-in
+    - Names preassigned in the built-in names module: open, range, SyntaxError,...
+
+## Object Oriented Programming
+
+- In Python everything is object
+  - To check: print(type(20.0)) # class 'float'
+- We create our own objects with classes
+
+```
+class Sample():
+  pass
+
+x = Sample()
+print(type(x)) # <class '__main__.Sample>
+```
