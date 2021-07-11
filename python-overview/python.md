@@ -272,3 +272,123 @@ class Sample():
 x = Sample()
 print(type(x)) # <class '__main__.Sample>
 ```
+
+- Special methods
+
+```
+#string representation special method
+  def __str__(self):
+    return f'Title: {self.title}, Author: {self.author}, Pages: {self.pages}'
+
+# len method
+  def __len__(self):
+    return self.pages
+
+# delete method
+  def __del__(self):
+    print("a book has been destroyed")
+```
+
+### Errors and Exceptions
+
+- We can use these keywords to dictate our code logic in case of an error:
+  - Try
+  - Except
+  - Finally
+
+### Handy tools
+
+- To open files use the open() function
+  - open("myfile.txt","r")
+  - The second parameter in the open() function dictates whether you are opening the file or just reading, just writing, or to do both
+  - If you use the wrong one , you may get an error
+
+## Regular Expressions
+
+- Allow us to search for patterns in Python strings
+- import re
+  ex.
+
+  ```
+  text = 'This is a string with term1 in it'
+  if re.search(pattern,text):
+    print("match')
+
+  match = re.search('term1', text)
+  print("match",match.start()) # match 22 -> finds the match at line 22
+  ```
+
+  We can use split with REX
+
+```
+split_term = '@'
+email = 'user@gmail.com'
+
+print(re.split(split_term, email)) # ['user', 'gmail.com']
+```
+
+To find all the instances of a pattern:
+
+```
+re.findall('match', 'test phrase match in the middle) # ['match']
+```
+
+## Decorators
+
+- Decorators are an advanced tool in Python
+  ex.:
+
+```
+def new_decorator(func):
+
+  def wrap_func():
+    print("code before executing func")
+    func()
+    print('func() has been called')
+  return wrap_func
+
+# with decorator
+@new_decorator
+def func_needs_decorator():
+  print('This function is in need of a decorator')
+
+'''
+without decorator:
+func_needs_decorator = new_decorator(func_needs_decorator)
+'''
+
+func_needs_decorator()
+```
+
+## Name and Main
+
+- Built in variable that evaluates the name of the current module
+  Sometimes when you are importing from a module, you would like to know whether
+  a modules function is being used as an import, or if you are using the original
+  .py file of that module. In this case we can use the:
+
+        if __name__ == "__main__":
+
+line to determine this. For example:
+
+When your script is run by passing it as a command to the Python interpreter:
+
+    python myscript.py
+
+all of the code that is at indentation level 0 gets executed. Functions and
+classes that are defined are, well, defined, but none of their code gets ran.
+Unlike other languages, there's no main() function that gets run automatically
+
+- the main() function is implicitly all the code at the top level.
+
+In this case, the top-level code is an if block. **name** is a built-in variable
+which evaluate to the name of the current module. However, if a module is being
+run directly (as in myscript.py above), then **name** instead is set to the
+string "**main**". Thus, you can test whether your script is being run directly
+or being imported by something else by testing
+
+    if __name__ == "__main__":
+        ...
+
+If that code is being imported into another module, the various function and
+class definitions will be imported, but the main() code won't get run.
