@@ -272,3 +272,33 @@ class Sample():
 x = Sample()
 print(type(x)) # <class '__main__.Sample>
 ```
+
+- Special methods
+
+```
+#string representation special method
+  def __str__(self):
+    return f'Title: {self.title}, Author: {self.author}, Pages: {self.pages}'
+
+# len method
+  def __len__(self):
+    return self.pages
+
+# delete method
+  def __del__(self):
+    print("a book has been destroyed")
+```
+
+### Errors and Exceptions
+
+- We can use these keywords to dictate our code logic in case of an error:
+  - Try
+  - Except
+  - Finally
+
+### Handy tools
+
+- To open files use the open() function
+  - open("myfile.txt","r")
+  - The second parameter in the open() function dictates whether you are opening the file or just reading, just writing, or to do both
+  - If you use the wrong one , you may get an error
