@@ -302,3 +302,33 @@ print(type(x)) # <class '__main__.Sample>
   - open("myfile.txt","r")
   - The second parameter in the open() function dictates whether you are opening the file or just reading, just writing, or to do both
   - If you use the wrong one , you may get an error
+
+## Regular Expressions
+
+- Allow us to search for patterns in Python strings
+- import re
+  ex.
+
+  ```
+  text = 'This is a string with term1 in it'
+  if re.search(pattern,text):
+    print("match')
+
+  match = re.search('term1', text)
+  print("match",match.start()) # match 22 -> finds the match at line 22
+  ```
+
+  We can use split with REX
+
+```
+split_term = '@'
+email = 'user@gmail.com'
+
+print(re.split(split_term, email)) # ['user', 'gmail.com']
+```
+
+To find all the instances of a pattern:
+
+```
+re.findall('match', 'test phrase match in the middle) # ['match']
+```
