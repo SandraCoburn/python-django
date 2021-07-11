@@ -332,3 +332,30 @@ To find all the instances of a pattern:
 ```
 re.findall('match', 'test phrase match in the middle) # ['match']
 ```
+
+## Decorators
+
+- Decorators are an advanced tool in Python
+  ex.:
+
+```
+def new_decorator(func):
+
+  def wrap_func():
+    print("code before executing func")
+    func()
+    print('func() has been called')
+  return wrap_func
+
+# with decorator
+@new_decorator
+def func_needs_decorator():
+  print('This function is in need of a decorator')
+
+'''
+without decorator:
+func_needs_decorator = new_decorator(func_needs_decorator)
+'''
+
+func_needs_decorator()
+```
