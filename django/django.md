@@ -23,3 +23,23 @@
 - conda activate myDjangoEnv
 - conda install django #to install django in the virtual env
 - conda deactivate #To get out of virtual env
+
+### Django
+
+- When you install Django, it also installs a command line toll called:
+  - django-admin
+- To create a project, type:
+  - django-admin startproject <project name>
+
+#### New Project files:
+
+- `__init__`.py
+  - This is a blank Python script that due to its special name let's Python know that this directory can be treated as a package
+- settings.py
+  - This is where we will store all our project settings
+- urls.py
+  - This is a Python script that will store all the URL patterns for our project. Basically the different pages of our web application
+- wsgi.py
+  - This is a Python script that acts as the Web Server Gateway Interface. It will later on help us deploy our web app to production
+- manage.py
+  - This is a Python script that we will use a lot. It will be associated with many commands as we build our web app
