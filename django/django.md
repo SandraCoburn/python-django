@@ -63,6 +63,22 @@ urlpatterns = [
 ]
 ```
 
+#### Using the include() function from django.conf.urls
+
+- The include() function allows us to look for a match with regular expressions and link back to our application's own urls.py file
+- We will have to manually add in this urls.py file
+- We add the following to the project's urls.py
+
+```
+from django.conf.urls import include
+ulrpatters = [...
+  url(r'^first_app/', include('first_app.urls')),
+...]
+```
+
+- This would allow us to look for any url that has the pattern: www.domainname.com/first_app/...
+- If we match that pattern, the include() function basically tells Django to go look at the urls.py file inside of first_app folder
+
 #### New Project files:
 
 - `__init__.py`
