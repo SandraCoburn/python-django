@@ -48,7 +48,7 @@
   from django.http import HttpResponse
 
   def index(request):
-    return HttpRes`ponse("Hello World!")
+    return HttpResponse("Hello World!")
   ```
 
 - Map the `view' to the URL.py file
@@ -58,7 +58,7 @@
   from first_app import views
 
 urlpatterns = [
-    path(r'^$',views.index, name='index'),
+    path('', views.index, name="index"),
     path('admin/', admin.site.urls),
 ]
 ```
