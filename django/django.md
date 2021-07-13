@@ -108,3 +108,37 @@ ulrpatters = [...
   - This is where we have functions that handle requests and return responses
 - `Migrations folder`
   - This directory stores database specific information as it relates to the models
+
+## Templates
+
+- The template will contain the static parts of an html page(parts that are always the same)
+- Template tags have their own special syntax
+- This syntax allows us to inject dynamic contento that our Django App's views will produce, effecting the final HTML
+- First create a templates directory and then a subdirectory for each specific app's template
+- It goes inside of your top level directory:
+  - first_project/templates/first_app
+- Next step is to let Django know of the templates by editing the DIR key inside of the TEMPLATES dictionary in the settings.py file
+- Python's os module dynamically generate the correct file path strings, regardless of computer
+- Import os and try the following:
+
+```
+print(__file__)
+print(os.path.dirname(__file__))
+```
+
+- We will use this os module to feed the path to the DIR key inside of the TEMPLATES dictionary
+- Once we've done that we can create an html file called index.html inside of the templates/first_app directory
+- Inside this HTML file we will instert template tags(a.k.a Django Template Variables)
+- These template variables will allow us to inject content into the HTML directly from Django
+
+### Dynamic paths
+
+- Open first_project/settings.py
+- Create a new folder in first_project named templates
+- Add template path to settings
+
+```
+BASE_DIR = Path(__file__).resolve().parent.parent
+TEMPLATES_DIR = Path(BASE_DIR)/'templates'
+print("temp direc",TEMPLATES_DIR)
+```
