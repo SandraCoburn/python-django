@@ -24,22 +24,71 @@
 - conda install django #to install django in the virtual env
 - conda deactivate #To get out of virtual env
 
-### Django
+### Django Project
 
+- A `Django Project` is a collection of applications and configurations that when combined together will make up the full web application (your complete website running with Django)
+- A `Django Application` is created to perform a particular functionality for our entire web application. For ex, we could have a registration app, a polling app, comments app, etc.
+  - These Django Apps can then be plugged into other Django Projects, so we can reuse them.
 - When you install Django, it also installs a command line toll called:
   - django-admin
-- To create a project, type:
+- To create a `project`, type:
   - django-admin startproject <project name>
+- Cd into project. To run server, type:
+  - python3 manage.py runserver
+- To create a new `app`:
+  - python3 manage.py startapp first_app
+- Go to first_project folder, open `settings.py`
+  - Add new app to INSTALLED_APPS list
+  - Run server again to be sure there is no errors
+- Create a new `view`:
+
+  - Go into first_app folder and open `views.py`
+
+  ```
+  from django.http import HttpResponse
+
+  def index(request):
+    return HttpRes`ponse("Hello World!")
+  ```
+
+- Map the `view' to the URL.py file
+  - Go to first_project folder and open urls.py to add views
+
+```
+  from first_app import views
+
+urlpatterns = [
+    path(r'^$',views.index, name='index'),
+    path('admin/', admin.site.urls),
+]
+```
 
 #### New Project files:
 
-- `__init__`.py
+- `__init__.py`
   - This is a blank Python script that due to its special name let's Python know that this directory can be treated as a package
-- settings.py
+- `settings.py`
   - This is where we will store all our project settings
-- urls.py
+- `urls.py`
   - This is a Python script that will store all the URL patterns for our project. Basically the different pages of our web application
-- wsgi.py
+- `wsgi.py`
   - This is a Python script that acts as the Web Server Gateway Interface. It will later on help us deploy our web app to production
-- manage.py
+- `manage.py`
   - This is a Python script that we will use a lot. It will be associated with many commands as we build our web app
+
+#### New App files:
+
+- `__init__.py`
+  - This is a blank Python script that due to its special name let's Python know that this directory can be treated as a package
+- `admin.py`
+- We can register our models here which Django will then use them with Django's admin interface.
+- `app.py`
+  - Here we can place application specific configurations
+- `models.py`
+  - Here we store the application's data models
+- `tests1
+  - Here we can store test functions to test our code
+- `views.py`
+  - This is where we have functions that handle requests and return responses
+- `Migrations folder`
+  - This directory stores database specific information as it relates to the models
