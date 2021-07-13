@@ -142,3 +142,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = Path(BASE_DIR)/'templates'
 print("temp direc",TEMPLATES_DIR)
 ```
+
+### Static Files
+
+- Create a new directory inside of the project called static
+- Add this directory path to the project;'s settings.py file
+- Add a STATIC_URL variable
+- Create a directory inside of static called images to store static image files
+- To check: 127.0.0.1:800/static/images/pict.jpg
+- Add a template tag:
+  - Inside html file, we add in a few specific tags, at the top:
+    - {% load staticfiles %}
+  - Then insert the image with an HTML `<img src=""> `style tag using:
+    - `<img src={%static "images/pic.jpg" %}>`
