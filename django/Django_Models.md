@@ -30,7 +30,9 @@ How to use Models and Databases
   - A primary key is a unique identifier for each row in a table
   - A foreign key just denotes that the column coincides with a primary key of another table
 
-- Model classes:
+### Model classes:
+
+Ex.
 
 ```
 class Topic(models.Model):
@@ -71,3 +73,13 @@ class Webpage(models.Model):
 - After setting up the models, we can populate them with some test data
 - We will use Faker library
   - pip install Faker
+
+### Models - Templates - Views Paradigm
+
+- Django operates on what is knows as Models-Templates-Views
+- This is also called "MTV" and encompasses the idea of how to connect everything: model, templates and views
+- 1: In the views.py file we import any models that we will need to use
+- 2: Use the view to query the model for data that we will need
+- 3: Pass results from the model to the template
+- 4: Edit the template so that it is ready to accept and display the data from the model
+- 5: Map a URL to the view
