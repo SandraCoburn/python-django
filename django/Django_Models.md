@@ -70,3 +70,4 @@ class Webpage(models.Model):
   - Providing a name, email, and password
 - After setting up the models, we can populate them with some test data
 - We will use Faker library
+  - pip install Faker
