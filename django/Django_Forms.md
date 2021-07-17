@@ -92,3 +92,40 @@ class FormName(forms.Form):
         print("Text"+form.cleaned_data["text"])
     return render(request, "basicapp/form_page.html",{'form':form})
   ```
+
+### Form Validation
+
+- Django has built-in validators you can conveniently use to validate your forms (or check for bots)
+- All code related to forms goes into forms.py file
+- Add:
+  - Adding a check for empty fields
+  - Adding a check for a "bot"
+  - Adding a clean method for the entire form
+
+Custom Validators:
+
+```
+from django import forms
+from django.core import validators
+
+#custom validator
+def check_for_z(value):
+  if value[0].lower() != "z":
+    raise forms.ValidationError("Name needs to start with Z")
+
+class FormName(forms.Form):
+  name = forms.CharField(validators=[check_for_z])
+  email = forms.EmailField()
+  text = forms.CharField(widget=forms.Textarea)
+
+```
+
+Hidden Fields:
+
+```
+from django import forms
+from django.core import validators
+
+ #hidden fields with buuilt in validator
+  botcatcher = forms.CharField(required=False,widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+```
