@@ -72,7 +72,7 @@ urlpatterns = [
 ```
 from django.conf.urls import include
 ulrpatters = [...
-  url(r'^first_app/', include('first_app.urls')),
+  path('first_app/', include('first_app.urls')),
 ...]
 ```
 
@@ -155,3 +155,45 @@ print("temp direc",TEMPLATES_DIR)
     - {% load staticfiles %}
   - Then insert the image with an HTML `<img src=""> `style tag using:
     - `<img src={%static "images/pic.jpg" %}>`
+
+### More About Templates
+
+- We can use templates to have a "base" template and inherit that template in the .html files
+- Templates are also used to solve issues with relatives paths and working with variables
+- Templates can also help solve issues by avoiding hard-coded URL paths
+- Templates come with built-in filter capabilities so you can adjust variables on the actual individual page
+
+#### Templates for Relative URLs
+
+- IF we want our Django project to work on any system, It is a poor practice to use an anchor tag with an href we've passed in a harcoded path to the file
+- How can we replace a hardcoded URL path in an href with a URL Template?
+
+  - 1. With the use of URLs in our templates. For example:
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url "thankyou%}>Thanks</a>
+
+  #name='thankyou' is in the urls.py file
+  ```
+
+  - 2. Could also just directly reference the view. For example:
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url'basicapp.iews.thankyou'%}">Thanks</a>
+  ```
+
+  - The suggested (and most future-proof) method to do all of this involves the urls.py file
+  - Inside the urls.py file we add in the variable app_name
+  - We then set this variable equal to a string that is the same as your app name
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url'basicapp:thankyou'%}">Thanks</a>
+  ```
+
+  - This method requires that app_name variable to be created inside the urls.py file
