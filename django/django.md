@@ -72,7 +72,7 @@ urlpatterns = [
 ```
 from django.conf.urls import include
 ulrpatters = [...
-  url(r'^first_app/', include('first_app.urls')),
+  path('first_app/', include('first_app.urls')),
 ...]
 ```
 
@@ -155,3 +155,87 @@ print("temp direc",TEMPLATES_DIR)
     - {% load staticfiles %}
   - Then insert the image with an HTML `<img src=""> `style tag using:
     - `<img src={%static "images/pic.jpg" %}>`
+
+### More About Templates
+
+- We can use templates to have a "base" template and inherit that template in the .html files
+- Templates are also used to solve issues with relatives paths and working with variables
+- Templates can also help solve issues by avoiding hard-coded URL paths
+- Templates come with built-in filter capabilities so you can adjust variables on the actual individual page
+
+#### Templates for Relative URLs
+
+- IF we want our Django project to work on any system, It is a poor practice to use an anchor tag with an href we've passed in a harcoded path to the file
+- How can we replace a hardcoded URL path in an href with a URL Template?
+
+  - 1. With the use of URLs in our templates. For example:
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url "thankyou%}>Thanks</a>
+
+  #name='thankyou' is in the urls.py file
+  ```
+
+  - 2. Could also just directly reference the view. For example:
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url'basicapp.iews.thankyou'%}">Thanks</a>
+  ```
+
+  - The suggested (and most future-proof) method to do all of this involves the urls.py file
+  - Inside the urls.py file we add in the variable app_name
+  - We then set this variable equal to a string that is the same as your app name
+
+  ```
+  <a href="basicapp/thankyou>Thanks</a>
+  #Can be changed to:
+  <a href="{% url'basicapp:thankyou'%}">Thanks</a>
+  ```
+
+  - This method requires that app_name variable to be created inside the urls.py file
+
+#### Django Template Inheritance
+
+- Template inheritance allows us to create a base template we can inherit from
+- This idea is sometimes also known as template extending, as in extending the base.html to other html files
+- The inheritance doesn't need to just be limited to one base.html file, you can extend multiple templates
+- Main steps for inheritance:
+  - Find repetitive parts of your project
+  - Create a base template of them
+  - Set the tags in the base template
+  - Extend and call those tags anywhere
+    Example `base.html`:
+
+```
+<link to JS, CSS, Bootstrap>
+<bunch of html like navbars>
+  <body>
+  {% block body_block%}
+  {%  endblock%}
+  </body>
+</More footer html>
+```
+
+Example `other.html`:
+
+```
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+{% block body_block %}
+<HTML specific fo other.html>
+<HTML specific for other.html>
+{% endblock %}
+```
+
+#### Template Features, Filters and Custom Filters
+
+- Django provides a ton of easy to implement template filters that allow us to effect the injection of customized code to edit information in various views/pages before displaying it to the user
+- The general form for a template filter is:
+  - {{ value | filter: 'paramenter'}}
+  - Not all filters take in parameters
+  - Many of these filters are based off of common built-in Python functions
+- [documentation](https://docs.djangoproject.com/en/3.2/ref/templates/language/) for Django Templates

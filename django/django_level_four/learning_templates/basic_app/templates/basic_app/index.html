@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% load custom_filter %} {% extends "basic_app/base.html" %} {% block
+body_block%}
+<h1>Welcome to Index</h1>
+<h2>This is index.html page showing.</h2>
+<!--Example of filters adding methods to change the template tag-->
+<h2>{{text | upper}}</h2>
+<h2>{{text | cutout:'hello'}}</h2>
+<h2>{{ number | add:"99"}}</h2>
+{% endblock %}
