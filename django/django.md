@@ -239,3 +239,25 @@ Example `other.html`:
   - Not all filters take in parameters
   - Many of these filters are based off of common built-in Python functions
 - [documentation](https://docs.djangoproject.com/en/3.2/ref/templates/language/) for Django Templates
+
+### Django User Uthentication
+
+- Users and the User Model
+- Permissions
+- Groups
+- `Passwords and Authentication`
+  - Never store passwords as plain text
+  - We will be using the default PBKDF2 algorithm with an SHA256 hash that is built-in to Django
+  - We will use bcrypt and Argon2
+  - In our virtual environment:
+    - pip install bcrypt
+    - pip install django[argon2]
+    ```
+    #for python3 use
+    python3 -m pip install argon2_cffi
+    python3 -m pip install -U cffi pip setuptools
+    ```
+    - Depending on Django version we may already have these installed
+  - Inside of settings.py we can pass in the list of PASSWORD_HASHERS to try in the order we want to try them.
+  - [Passwords validation documentation](https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators)
+- Logging In and Out

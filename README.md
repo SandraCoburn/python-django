@@ -19,6 +19,7 @@ Python and Django Practice
 - conda install django #to install django in the virtual env
 - conda deactivate #To get out of virtual env
 - python3 manage.py runserver #inside the directory to run a server
+- python3 manage.py migrate #whenever we add a new file we migrate to register changes
 
 ## Programming tips
 
