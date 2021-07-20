@@ -11,6 +11,15 @@ Python and Django Practice
 - `Python`
 - [Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) is a powerful package manager and environment manager that you use with command line commands at the Anaconda Propt for Windows, or in a terminal window for macOS or Linux
 
+## Basic commands to start a Django app
+
+- conda activate myDjangoEnv
+- conda create --name myDjangoEnv django
+- conda create --name myDjangoEnv python=3.5 #to specify python version
+- conda install django #to install django in the virtual env
+- conda deactivate #To get out of virtual env
+- python3 manage.py runserver #inside the directory to run a server
+
 ## Programming tips
 
 - Conda will not work with zsh with Mac Cataline. [This link's](https://stackoverflow.com/questions/59833435/zsh-command-not-found-conda-after-upgrading-to-catalina-and-even-after-reinstal) tips solved the problem
