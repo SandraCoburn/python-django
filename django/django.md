@@ -197,3 +197,36 @@ print("temp direc",TEMPLATES_DIR)
   ```
 
   - This method requires that app_name variable to be created inside the urls.py file
+
+#### Django Template Inheritance
+
+- Template inheritance allows us to create a base template we can inherit from
+- This idea is sometimes also known as template extending, as in extending the base.html to other html files
+- The inheritance doesn't need to just be limited to one base.html file, you can extend multiple templates
+- Main steps for inheritance:
+  - Find repetitive parts of your project
+  - Create a base template of them
+  - Set the tags in the base template
+  - Extend and call those tags anywhere
+    Example `base.html`:
+
+```
+<link to JS, CSS, Bootstrap>
+<bunch of html like navbars>
+  <body>
+  {% block body_block%}
+  {%  endblock%}
+  </body>
+</More footer html>
+```
+
+Example `other.html`:
+
+```
+<!DOCTYPE html>
+{% extends "basic_app/base.html"%}
+{% block body_block %}
+<HTML specific fo other.html>
+<HTML specific for other.html>
+{% endblock %}
+```
