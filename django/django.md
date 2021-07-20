@@ -230,3 +230,12 @@ Example `other.html`:
 <HTML specific for other.html>
 {% endblock %}
 ```
+
+#### Template Features, Filters and Custom Filters
+
+- Django provides a ton of easy to implement template filters that allow us to effect the injection of customized code to edit information in various views/pages before displaying it to the user
+- The general form for a template filter is:
+  - {{ value | filter: 'paramenter'}}
+  - Not all filters take in parameters
+  - Many of these filters are based off of common built-in Python functions
+- [documentation](https://docs.djangoproject.com/en/3.2/ref/templates/language/) for Django Templates
