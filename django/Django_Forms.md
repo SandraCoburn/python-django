@@ -129,3 +129,43 @@ from django.core import validators
  #hidden fields with buuilt in validator
   botcatcher = forms.CharField(required=False,widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 ```
+
+### Model Forms
+
+- Django makes accepting form input and passint it to a model very simple
+- Instead of inheriting from the forms.Forms class, we will use forms.ModelForm in our forms.py file
+- This helper class allows us to create a form from a pre-existing model
+- Then add an inline class called Meta
+- This Meta class provides information connecting the model to the form
+  Example:
+
+```
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+  #Form Fields go here
+  class Meta:
+    model = MyModel
+    fields =
+
+```
+
+The fields attribute will connect to the model. Here you grab all the fields from the form.
+
+```
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+  # Form Fields go here
+  class Meta:
+    model = MyModel
+    fields = "__all__"
+#Or exclude certain fields
+  class Meta:
+  model = MyModel
+  exclude = ["field1", "field2"]
+# or include some fields
+  fields = ("field1", "field2")
+```

@@ -18,6 +18,7 @@ Python and Django Practice
 - conda create --name myDjangoEnv python=3.5 #to specify python version
 - conda install django #to install django in the virtual env
 - conda deactivate #To get out of virtual env
+- python3 manage.py runserver #inside the directory to run a server
 
 ## Programming tips
 
