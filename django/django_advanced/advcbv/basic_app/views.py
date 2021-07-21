@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView, DetailView
 from django.http import HttpResponse
+from . import models
 
 # Create your views here.
 '''
@@ -9,13 +10,27 @@ class CBView(View):
   def get(self, request):
     return HttpResponse('Class Based Views are Cool!')
 '''
-
-#Using Django TemplateView
 class IndexView(TemplateView):
-  template_name = 'index.html'
+    # Just set this Class Object Attribute to the template page.
+    # template_name = 'app_name/site.html'
+    template_name = 'index.html'
 
-  #Injecting tags
-  def get_context_data(self,**kwargs):
-    context = super().get_context_data(**kwargs)
-    context['injectme'] = "BASIC INJECTION"
-    return context
+    def get_context_data(self,**kwargs):
+        context  = super().get_context_data(**kwargs)
+        context['injectme'] = "Basic Injection!"
+        return context
+
+class SchoolListView(ListView):
+    # If you don't pass in this attribute,
+    # Django will auto create a context name
+    # for you with object_list!
+    # Default would be 'school_list'
+
+    # Example of making your own:
+  context_object_name = 'schools'
+  model = models.School
+
+class SchoolDetailView(DetailView):
+  context_object_name = 'school_detail'
+  model = models.School
+  template_name = 'basic_app/school_detail.html'
