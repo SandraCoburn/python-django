@@ -320,3 +320,12 @@ Example `other.html`:
   - Inside of settings.py we can pass in the list of PASSWORD_HASHERS to try in the order we want to try them.
   - [Passwords validation documentation](https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators)
 - Logging In and Out
+
+#### Login and Logout
+
+- Creating a login
+  - Setting up the login views
+  - Using built-in decorators for access
+  - Adding the LOGIN_URL in settings
+  - Creating the login.html
+  - Editing the urls.py files
