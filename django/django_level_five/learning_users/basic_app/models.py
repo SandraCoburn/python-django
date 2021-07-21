@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class UserProfileInfo(models.Model):
   # To add more attibutes to User
-  user = models.OneToOneField(User)
+  user = models.OneToOneField(User, on_delete=models.CASCADE)
 
   #Additional attributes
   portfolio_site = models.URLField(blank=True)
