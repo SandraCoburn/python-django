@@ -93,6 +93,12 @@ class FormName(forms.Form):
     return render(request, "basicapp/form_page.html",{'form':form})
   ```
 
+  - If we are uploading an multi media data such an image file in a form, we have to add enctype to html form tag:
+
+  ```
+  <form enctype="multipart/form-data" method="POST" ></form>
+  ```
+
 ### Form Validation
 
 - Django has built-in validators you can conveniently use to validate your forms (or check for bots)
@@ -159,11 +165,11 @@ from myapp.models import MyModel
 
 class MyNewForm(forms.ModelForm):
   # Form Fields go here
-  class Meta:
+  class Meta():
     model = MyModel
     fields = "__all__"
 #Or exclude certain fields
-  class Meta:
+  class Meta():
   model = MyModel
   exclude = ["field1", "field2"]
 # or include some fields
