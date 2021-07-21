@@ -242,7 +242,66 @@ Example `other.html`:
 
 ### Django User Uthentication
 
-- Users and the User Model
+- `Users and the User Model`
+
+  - Django has built in tools to create User Authorization Models
+  - The `User` object has a few key features:
+    - Username
+    - Email
+    - Password
+    - First Name
+    - Surname
+  - There are also some other attributes for the `User` object, such as is_active, is_staff,, is_superuser
+  - We might want to add more attributes to a user, such as their own links or a profile image
+  - We can do this in our applications model.py file by creating another class that has a relationship to the `User` class
+  - Example:
+
+  ```
+  from django.contrib.auth.models import User
+
+  #models
+  class UserProfileInfo(models.Model):
+
+    #Create relationship (don't inherit from User!)
+    user = modes.OneToOneField(User)
+
+    #Add any additional attributes you want
+    portfolio = models.URLField(blank=True)
+    picture = models.ImageField(upload_to='profile_pics)
+
+    def __str__(self):
+    #Built-in attribute of django.contrib.auth.models.User
+    return self.user.username
+  ```
+
+  - ImageField will allow us to store images to a model, typically we will keep any user uploaded content like this in the media file
+  - In order to work with images with Python we will need to install the Python Imaging Library with:
+    - `pip install pillow`
+  - Once we've created this model we'll have to remember to register it in the admin.py file, with something like:
+    - admin.site.register(UserProfileInfo)
+  - Images, CSS, JS, etc. all go in the static folder of our project, with the STATIC_ROOT variable path defined inside of settings.py
+  - User uploaded content will go to the media folder, with the MEDIA_ROOT
+  - Next we will want to implement a Django form that the User can use to work with the websiete. This goes inside the forms.py file
+
+  ```
+  from django import forms
+  from asic_app.models import UserProfileInfo
+
+  class UserProfileInfoForm(forms.ModelForm):
+    portfolio = forms.URLField(required=False)
+    picture = forms.ImageField(required=False)
+
+    class Meta(): #connects the mode to the User profile
+      model = UserProfileInfo
+      exclude = ('user',)
+  ```
+
+  - Set up:
+    - User Model
+    - Media Directory
+    - Handling Images
+    - User Form
+
 - Permissions
 - Groups
 - `Passwords and Authentication`
@@ -250,10 +309,10 @@ Example `other.html`:
   - We will be using the default PBKDF2 algorithm with an SHA256 hash that is built-in to Django
   - We will use bcrypt and Argon2
   - In our virtual environment:
-    - pip install bcrypt
-    - pip install django[argon2]
+    - `pip install bcrypt`
+    - `pip install django[argon2]`
     ```
-    #for python3 use
+    #for python3 users:
     python3 -m pip install argon2_cffi
     python3 -m pip install -U cffi pip setuptools
     ```
