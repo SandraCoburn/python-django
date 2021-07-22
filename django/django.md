@@ -329,3 +329,11 @@ Example `other.html`:
   - Adding the LOGIN_URL in settings
   - Creating the login.html
   - Editing the urls.py files
+
+### Django Deployment
+
+- Options for deploying Django projects, follow the link for instructions clear step-by-step walkthrough of deploying on a platform:
+  - [PythonAnywhere](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)
+  - [Heroku](https://devcenter.heroku.com/articles/deploying-python)
+  - [AWS Elastic Beanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-django.html)
+  - [VPS](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps)
