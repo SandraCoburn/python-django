@@ -20,3 +20,11 @@ def index(request):
 class IndexView(TemplateView):
   template_name = 'index.html
 ```
+
+## CRUDE
+
+- Create, Retrieve, Update and Delete
+- Django has class based views to simplify this entire process
+- CreateView class
+- UpdateView class
+- DeleteView class
